@@ -5,7 +5,6 @@ import moment from "moment"
 import { createContext, useState, useEffect } from "react"
 
 import { onAuthChanged, signOut } from "@utils/firebase/auth"
-import { supabase } from "@utils/database/client"
 
 export const AuthContext = createContext<any>(null)
 
@@ -42,26 +41,6 @@ export const AuthProvider = ({ children }: any) => {
 				signOut().then(() => {
 					window.location.href = "/"
 				})
-			} else {
-				try {
-					// Pull the users database record via their email address
-					const { data: userData, error: queryError } = await supabase.from("users").select("first_name,last_name,biography,email,phone,picture_url,user_uuid").eq("email", user.email).single()
-
-					if (userData?.user_uuid) {
-						setUser({
-							loading: false,
-							logged_in: true,
-							...userData,
-							firebase: {
-								...user,
-							},
-						})
-					} else {
-						console.log(queryError)
-					}
-				} catch (err: any) {
-					console.log(err.message)
-				}
 			}
 		})
 
