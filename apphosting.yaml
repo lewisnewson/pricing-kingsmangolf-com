@@ -1,0 +1,24 @@
+# Settings for Cloud Run
+runConfig:
+  minInstances: 2
+  maxInstances: 5
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 1024
+
+# Environment variables
+env:
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: "AIzaSyBin6Nme7HzvHgdYe43DdgYmQWin6K-pww"
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: "pricing-kingsmangolf-com.firebaseapp.com"
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: "pricing-kingsmangolf-com"
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: "pricing-kingsmangolf-com.appspot.com"
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "267670357763"
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: "1:267670357763:web:45e9289cddf07c867f8b36"
+  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    value: "G-VRQ49BM6Z0"
