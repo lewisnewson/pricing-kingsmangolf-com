@@ -8,12 +8,21 @@ import { onAuthChanged, signOut } from "@utils/firebase/auth"
 
 export const AuthContext = createContext<any>(null)
 
+interface UserState {
+	loading: boolean
+	logged_in: boolean
+	firebase?: any
+	profile?: any
+}
+
 export const AuthProvider = ({ children }: any) => {
-	const [user, setUser] = useState({
+	const [user, setUser] = useState<UserState>({
 		loading: true,
 		logged_in: false,
 		firebase: null,
+		profile: null,
 	})
+	console.log("User", user)
 
 	useEffect(() => {
 		const unsubscribe = onAuthChanged(async (user: any) => {
@@ -23,6 +32,7 @@ export const AuthProvider = ({ children }: any) => {
 					loading: false,
 					logged_in: false,
 					firebase: null,
+					profile: null,
 				})
 				return
 			}
@@ -40,6 +50,16 @@ export const AuthProvider = ({ children }: any) => {
 			if (lastSignIn < sessionTimeout) {
 				signOut().then(() => {
 					window.location.href = "/"
+				})
+			} else {
+				setUser({
+					loading: false,
+					logged_in: true,
+					profile: {
+						name: user.displayName,
+						email: user.email,
+						metadata: user.metadata,
+					},
 				})
 			}
 		})

@@ -4,8 +4,8 @@ import styles from "./page.module.scss"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 
-// Auth login trigger function
-import { loadSignInModal } from "@utils/firebase/auth"
+// Auth login providers
+import { loadSignInModal, loginWithFirstParty } from "@utils/firebase/auth"
 
 // UI components
 import Logo from "@images/kingsman-golf-travel.png"
@@ -35,7 +35,18 @@ export default function Login() {
 		setLoading(true)
 		setLoginError(null)
 
-		setLoginError("There was a problem logging in. Please try again.")
+		const error = await loginWithFirstParty(email, password)
+		console.log("Native eroor", error)
+
+		if (!error) {
+			setLoading(false)
+			router.push("/dashboard")
+			return
+		}
+
+		if (error) {
+			setLoginError("There was a problem logging in. Please try again.")
+		}
 
 		setLoading(false)
 	}
