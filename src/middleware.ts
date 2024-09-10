@@ -8,6 +8,7 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
 	// Extract the firebase auth token from cookies (written after a login)
 	const firebaseToken: any = request.cookies.get("KINGS__FB_Token")
+	console.log("Firebase token", firebaseToken)
 
 	// @TODO - Validate the session token with Firebase
 	const tokenValid = true
