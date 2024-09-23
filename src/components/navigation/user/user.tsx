@@ -16,6 +16,9 @@ export default function User() {
 	// Pull the users details from the AuthContext
 	const { user } = useContext(AuthContext)
 
+	// Pull the user profile information
+	const { profile } = user
+
 	// Create a reference for the dropdown container
 	const containerRef: any = useRef(null)
 
@@ -39,23 +42,27 @@ export default function User() {
 		}
 	}, [])
 
+	// Without a user profile, return early
+	if (!profile) return null
+
 	return (
 		<div
 			ref={containerRef}
 			className={[styles.container, dropdownToggled ? styles.isToggled : ""].join(" ")}
 			onClick={handleClick}>
 			<div className={styles.image}>
-				{user.picture_url && (
+				{profile.picture_url && (
 					<img
-						src={user.picture_url}
-						alt={`${user.first_name}'s Profile Image`}
+						src={profile.picture_url}
+						alt={`${profile.first_name}'s Profile Image`}
 					/>
 				)}
 			</div>
 
-			<p className={styles.name}>
-				{user.first_name} {user.last_name}
-			</p>
+			<div className={styles.names}>
+				<p className={styles.name}>{profile.name || profile.email}</p>
+				{profile.name && <p className={styles.email}>{profile.email}</p>}
+			</div>
 
 			<img
 				className={styles.icon}

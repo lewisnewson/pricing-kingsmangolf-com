@@ -14,8 +14,7 @@ export default function CoreLayout({
 			<Navigation />
 
 			<div className={styles.body}>
-				<Header />
-				{children}
+				<div className={styles.inner}>{children}</div>
 			</div>
 		</main>
 	)

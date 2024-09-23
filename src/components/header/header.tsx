@@ -2,7 +2,7 @@
 
 import styles from "./header.module.scss"
 import { usePathname } from "next/navigation"
-import User from "./user/user"
+import User from "../navigation/user/user"
 
 // Setup an object for the different page titles
 const titles: any = {
@@ -19,10 +19,6 @@ export default function Header() {
 	return (
 		<div className={styles.container}>
 			<h1>{titles[actualBase]}</h1>
-
-			<div className={styles.actions}>
-				<User />
-			</div>
 		</div>
 	)
 }

@@ -1,9 +1,11 @@
 .container {
+	position: relative;
 	display: flex;
 	gap: 12px;
 	align-items: center;
+	justify-content: space-between;
 	cursor: pointer;
-	padding: 0 22px;
+	padding: 0 22px 12px;
 	border-left: 1px solid #e8e8e8;
 
 	&.isToggled {
@@ -19,6 +21,7 @@
 		border-radius: 50%;
 		overflow: hidden;
 		background: #e8e8e8;
+		flex: 0 0 32px;
 
 		img {
 			position: relative;
@@ -30,16 +33,31 @@
 		}
 	}
 
-	.name {
-		font-size: 13px;
-		font-weight: 500;
-		user-select: none;
+	.names {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		overflow: hidden;
+
+		.name {
+			font-size: 13px;
+			font-weight: 500;
+			user-select: none;
+		}
+
+		.email {
+			font-size: 12px;
+			font-weight: 400;
+			opacity: 0.65;
+			margin-top: 2px;
+			user-select: none;
+		}
 	}
 
 	.dropdown {
 		position: absolute;
 		background: #fff;
-		top: calc(100% - 12px);
+		bottom: calc(100% - 12px);
 		opacity: 0;
 		right: 22px;
 		border-radius: 6px;
@@ -51,7 +69,7 @@
 		pointer-events: none;
 
 		&.isToggled {
-			top: calc(100% - 5px);
+			bottom: calc(100% + 10px);
 			transform: scale(1);
 			opacity: 1;
 			pointer-events: all;

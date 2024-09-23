@@ -13,7 +13,7 @@ export async function loginWithFirstParty(email: any, password: any) {
 				const user: any = userCredential.user
 				const idToken = user.accessToken
 
-				document.cookie = `__session=${idToken}; path=/; secure; samesite=strict;`
+				document.cookie = `__KG_FB_Token=${idToken}; path=/; secure; samesite=strict;`
 			})
 			.catch((error) => {
 				console.log(error.message)
@@ -37,7 +37,7 @@ export async function loadSignInModal() {
 				const credential: any = OAuthProvider.credentialFromResult(result)
 				const idToken = credential.idToken
 
-				document.cookie = `__session=${idToken}; path=/; secure; samesite=strict;`
+				document.cookie = `__KG_FB_Token=${idToken}; path=/; secure; samesite=strict;`
 			})
 			.catch((error: any) => {
 				return error.code
@@ -50,7 +50,7 @@ export async function loadSignInModal() {
 export async function signOut() {
 	try {
 		return auth.signOut().then(() => {
-			document.cookie = "__session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; secure; samesite=strict;"
+			document.cookie = "__KG_FB_Token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; secure; samesite=strict;"
 
 			window.location.href = "/"
 		})

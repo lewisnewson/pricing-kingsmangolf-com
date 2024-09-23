@@ -2,6 +2,7 @@ import styles from "./navigation.module.scss"
 
 // UI components
 import Logo from "@images/kingsman-golf-travel.png"
+import User from "./user/user"
 
 // Returns the inner HTML markup for the navigation
 export default function Navigation() {
@@ -12,9 +13,13 @@ export default function Navigation() {
 					src={Logo.src}
 					alt="Kingsman Golf Travel"
 				/>
-
-				<small>Pricing system v1.0.0</small>
 			</div>
+
+			<div className={styles.user}>
+				<User />
+			</div>
+
+			<small>Pricing system v1.0.0</small>
 		</div>
 	)
 }
