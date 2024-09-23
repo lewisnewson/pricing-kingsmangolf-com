@@ -37,9 +37,9 @@ export default function SimpleDataTableExample() {
 					headings: columns,
 					data: rows.map((row) => Object.values(row)),
 				},
-				searchable: true,
+				searchable: false,
 				sortable: true,
-				perPage: 10,
+				perPage: 100,
 			})
 		}
 
