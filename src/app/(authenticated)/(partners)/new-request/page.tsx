@@ -1,4 +1,3 @@
-import MyBookings from "./_client/client"
 import styles from "./page.module.scss"
 
 export default function NewRequest() {
@@ -8,8 +7,6 @@ export default function NewRequest() {
 				<h1>New Price Request</h1>
 				<p>Use this form to create a new pricing request</p>
 			</div>
-
-			<MyBookings />
 		</>
 	)
 }
