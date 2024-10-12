@@ -1,17 +1,20 @@
+"use client"
+
 import styles from "./navigation.module.scss"
 
 // UI components
 import Logo from "@images/kingsman-golf-travel.png"
 import User from "./user/user"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 // Returns the inner HTML markup for the navigation
 export default function Navigation() {
 	const isStaff = false
 	const isPartner = !isStaff
 
-	// Get the current path
-	const path = typeof window !== "undefined" ? window.location.pathname : ""
+	const pathname = usePathname()
+	console.log(pathname)
 
 	return (
 		<div className={styles.container}>
@@ -26,7 +29,7 @@ export default function Navigation() {
 				{isStaff && (
 					<>
 						<Link
-							className={[styles.link, path === "/staff" ? styles.active : ""].join(" ")}
+							className={[styles.link, pathname === "/staff" ? styles.isActive : ""].join(" ")}
 							href="/staff">
 							Staff
 						</Link>
@@ -41,12 +44,12 @@ export default function Navigation() {
 				{isPartner && (
 					<>
 						<Link
-							className={[styles.link, path === "/new-request" ? styles.active : ""].join(" ")}
+							className={[styles.link, pathname === "/new-request" ? styles.isActive : ""].join(" ")}
 							href="/new-request">
 							New Request
 						</Link>
 						<Link
-							className={[styles.link, path === "/previous-requests" ? styles.active : ""].join(" ")}
+							className={[styles.link, pathname === "/previous-requests" ? styles.isActive : ""].join(" ")}
 							href="/previous-requests">
 							Previous Requests
 						</Link>
