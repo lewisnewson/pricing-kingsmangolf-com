@@ -1,16 +1,15 @@
 .container {
-	display: grid;
-	grid-gap: 0;
-	grid-template-columns: 270px 1fr;
+	display: flex;
+	flex-direction: column;
 
 	.body {
-		padding: 20px;
+		display: flex;
+		flex: 1 1;
 
 		.inner {
-			background: #fff;
-			border-radius: 8px;
 			min-height: 100%;
-			border: 1px solid #e8e8e8;
+			width: 100%;
+			background: #fff;
 		}
 	}
 }

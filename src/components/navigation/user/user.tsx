@@ -50,15 +50,6 @@ export default function User() {
 			ref={containerRef}
 			className={[styles.container, dropdownToggled ? styles.isToggled : ""].join(" ")}
 			onClick={handleClick}>
-			<div className={styles.image}>
-				{profile.picture_url && (
-					<img
-						src={profile.picture_url}
-						alt={`${profile.first_name}'s Profile Image`}
-					/>
-				)}
-			</div>
-
 			<div className={styles.names}>
 				<p className={styles.name}>{profile.name || profile.email}</p>
 				{profile.name && <p className={styles.email}>{profile.email}</p>}

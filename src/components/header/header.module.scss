@@ -1,15 +1,18 @@
 .container {
 	position: relative;
-	background: #fff;
 	border-bottom: 1px solid #e8e8e8;
-	height: 65px;
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding-left: 32px;
+	flex-direction: column;
+	padding: 16px 32px;
 
 	h1 {
-		font-size: 24px;
+		font-size: 21px;
 		font-weight: 700;
+	}
+
+	p {
+		margin-top: 4px;
+		font-size: 15px;
+		opacity: 0.65;
 	}
 }

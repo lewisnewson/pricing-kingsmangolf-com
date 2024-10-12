@@ -1,43 +1,49 @@
 .container {
+	flex: 0 0;
 	position: relative;
+	z-index: 2;
 	background: #fff;
-	border-right: 1px solid #e8e8e8;
 	display: flex;
-	flex-direction: column;
+	align-items: center;
+	border-bottom: 2px solid #e8e8e8;
 
 	.logo {
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
-		padding: 26px 20px 64px 32px;
+		padding: 6px 0 6px 10px;
+		height: 40px;
 
 		img {
-			width: 100%;
+			height: 100%;
 		}
 	}
 
 	.linksColumn {
 		display: flex;
 		gap: 6px;
-		flex-direction: column;
 		padding: 0 10px;
 
 		.link {
-			font-size: 14px;
+			font-size: 13px;
 			text-decoration: none;
 			color: #000;
-			padding: 10px 20px;
-			background: #f7f7f7;
+			padding: 13px 20px 10px;
 			border-radius: 4px;
+			border-bottom: 2px solid #fff;
+			display: block;
+			opacity: 0.65;
 
 			&:hover {
-				background: #f2f2f2;
+				opacity: 1;
+				border-bottom: 2px solid #f2f2f2;
+			}
+
+			&.isActive {
+				opacity: 1;
+				border-bottom: 2px solid #000;
 			}
 		}
-	}
-
-	.user {
-		margin-top: auto;
 	}
 
 	small {

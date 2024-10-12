@@ -5,8 +5,9 @@
 	align-items: center;
 	justify-content: space-between;
 	cursor: pointer;
-	padding: 0 22px 12px;
+	padding: 4px 10px;
 	border-left: 1px solid #e8e8e8;
+	margin-left: auto;
 
 	&.isToggled {
 		.icon {
@@ -57,7 +58,7 @@
 	.dropdown {
 		position: absolute;
 		background: #fff;
-		bottom: calc(100% - 12px);
+		top: calc(100% - 12px);
 		opacity: 0;
 		right: 22px;
 		border-radius: 6px;
@@ -69,7 +70,7 @@
 		pointer-events: none;
 
 		&.isToggled {
-			bottom: calc(100% + 10px);
+			top: calc(100% + 14px);
 			transform: scale(1);
 			opacity: 1;
 			pointer-events: all;

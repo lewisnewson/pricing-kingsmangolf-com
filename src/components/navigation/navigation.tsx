@@ -10,6 +10,9 @@ export default function Navigation() {
 	const isStaff = false
 	const isPartner = !isStaff
 
+	// Get the current path
+	const path = typeof window !== "undefined" ? window.location.pathname : ""
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.logo}>
@@ -23,7 +26,7 @@ export default function Navigation() {
 				{isStaff && (
 					<>
 						<Link
-							className={styles.link}
+							className={[styles.link, path === "/staff" ? styles.active : ""].join(" ")}
 							href="/staff">
 							Staff
 						</Link>
@@ -38,12 +41,12 @@ export default function Navigation() {
 				{isPartner && (
 					<>
 						<Link
-							className={styles.link}
+							className={[styles.link, path === "/new-request" ? styles.active : ""].join(" ")}
 							href="/new-request">
 							New Request
 						</Link>
 						<Link
-							className={styles.link}
+							className={[styles.link, path === "/previous-requests" ? styles.active : ""].join(" ")}
 							href="/previous-requests">
 							Previous Requests
 						</Link>
@@ -51,11 +54,7 @@ export default function Navigation() {
 				)}
 			</div>
 
-			<div className={styles.user}>
-				<User />
-			</div>
-
-			<small>v1.0.0</small>
+			<User />
 		</div>
 	)
 }
